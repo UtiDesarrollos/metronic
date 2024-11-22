@@ -1,0 +1,126 @@
+/* Variables */
+.demo1 {
+	--tw-sidebar-transition-duration: 0.3s;
+	--tw-sidebar-transition-timing: ease;
+	--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.desktop');
+	--tw-sidebar-defualt-width: theme('custom.layouts.demo1.sidebar.width.desktop');
+	--tw-header-height: theme('custom.layouts.demo1.header.height.desktop');
+}
+
+@media (max-width: theme('screens.lg')) {
+	.demo1 {
+		--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.mobile');
+		--tw-header-height: theme('custom.layouts.demo1.header.height.mobile');
+	}
+};   
+
+/* Base */
+.demo1 .header {
+	height: var(--tw-header-height);
+}
+
+.demo1 .sidebar {
+	width: var(--tw-sidebar-width);
+}
+
+.demo1.header-fixed .wrapper {
+	padding-top: var(--tw-header-height);
+} 	
+
+/* Desktop mode */
+@media (min-width: theme('screens.lg')) {
+	.demo1 .sidebar {
+		width: var(--tw-sidebar-width);
+		transition: width var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
+	}
+	
+	.demo1 .sidebar .sidebar-header {
+		height: var(--tw-header-height);
+	}
+	
+	.demo1 .sidebar .sidebar-wrapper {
+		width: var(--tw-sidebar-defualt-width);
+	}
+	
+	.demo1 .sidebar .sidebar-logo {
+		width: var(--tw-sidebar-defualt-width);
+	}
+	
+	.demo1 .sidebar .small-logo {
+		display: none;
+	}
+	
+	.demo1.sidebar-fixed .wrapper {
+		padding-left: var(--tw-sidebar-width);
+		transition: padding-left var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
+	}
+	
+	.demo1.sidebar-fixed.header-fixed .header {
+		left: var(--tw-sidebar-width);
+		transition: left var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
+	}
+	
+	.demo1.sidebar-fixed.header-fixed .wrapper {
+		padding-top: var(--tw-header-height);
+	}
+	
+	.demo1.sidebar-collapse {
+		--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.desktopCollapse');
+	}
+	
+	.demo1.sidebar-collapse .sidebar {
+		transition: width var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
+	}
+	
+	.demo1.sidebar-collapse .sidebar.animating {
+		pointer-events: none;
+	}
+	
+	.demo1.sidebar-collapse .sidebar:hover:not(.animating) {
+		width: var(--tw-sidebar-defualt-width);
+		transition: width var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
+	}
+	
+	.demo1.sidebar-collapse .sidebar:not(:hover) .default-logo {
+		display: none;
+	}
+	
+	.demo1.sidebar-collapse .sidebar:not(:hover) .small-logo {
+		display: flex;
+	}
+	
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-link .menu-title,
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-link .menu-arrow,
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-link .menu-badge,
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-label .menu-title,
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-label .menu-arrow,
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-label .menu-badge {
+		display: none;
+	}
+	
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-accordion {
+		display: none;
+	}
+	
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-heading {
+		visibility: hidden;
+		position: relative;
+	}
+	
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-heading::before {
+		content: "...";
+		color: currentColor;
+		font-size: inherit;
+		position: absolute;
+		visibility: visible;
+		display: inline-block;
+		bottom: 50%;
+		left: 0;
+		margin-left: 0.225rem;
+		transform: translateX(100%);
+	}
+	
+	.demo1.sidebar-collapse .sidebar .sidebar-content {
+		overflow: hidden;
+	}
+}
